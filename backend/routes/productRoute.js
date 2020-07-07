@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 const app = express();
 const router = express.Router();
 
-router.get("/pr", async(req, res) => {
+router.get("/", async(req, res) => {
   await
   pool
   .query('SELECT Id, sfid,name, ProductCode, Price__c, Brand__c, category__c, countInStock__c, Description__c, rating__c, numReviews__c, DisplayUrl FROM salesforce.Product2')
@@ -17,21 +17,21 @@ router.get("/pr", async(req, res) => {
   .catch((productQueryError) =>
     {
       console.log('productQueryError  : '+productQueryError);
-       response.send(productQueryError);
+       res.send(productQueryError);
     })
 });
 
-router.get("/", async(request, res) => {
-  let body = request.body;
-  let name= request.body.name;
-  let price= request.body.price;
-  let proCode= request.body.proCode;
-  let image= request.body.image;
-  let brand= request.body.brand;
-  let category= request.body.category;
-  let countInStock= request.body.countInStock;
-  let description= request.body.description;
-  console.log(request.body);
+router.post("/", async(req, res) => {
+  let body = req.body;
+  let name= req.body.name;
+  let price= req.body.price;
+  let proCode= req.body.proCode;
+  let image= req.body.image;
+  let brand= req.body.brand;
+  let category= req.body.category;
+  let countInStock= req.body.countInStock;
+  let description= req.body.description;
+  console.log(req.body);
   {
   await
   pool
@@ -41,11 +41,11 @@ router.get("/", async(request, res) => {
              let objPro = productQueryResult.rows[0];
               console.log('productQueryResult.rows : '+JSON.stringify(productQueryResult));
                 /******* Successfully  Inserted*/
-               res.status(201).send({ message: 'New Product Created', data: objPro });
+             return (res.status(201).send({ message: 'New Product Created', data: objPro }));
             })
             .catch((productInsertQueryError)=> {
               console.log('productInsertQueryError '+productInsertQueryError);
-              res.status(500).send({message: 'Error in creating Product.'});
+            return (res.status(500).send({message: 'Error in creating Product.'}));
             })
           }
 });

@@ -16,8 +16,8 @@ const addToCart = (productId, qty) => async (dispatch, getState) => {
         qty
       }
     });
-  //  const { cart: { cartItems } } = getState();
-    //Cookie.set("cartItems", JSON.stringify(cartItems));
+   const { cart: { cartItems } } = getState();
+    Cookie.set("cartItems", JSON.stringify(cartItems));
 
   } catch (error) {
 
@@ -36,4 +36,4 @@ const saveShipping = (data) => (dispatch) => {
 const savePayment = (data) => (dispatch) => {
   dispatch({ type: CART_SAVE_PAYMENT, payload: data });
 }
-export { addToCart, removeFromCart }
+export { addToCart, removeFromCart, saveShipping }
