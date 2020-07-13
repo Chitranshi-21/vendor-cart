@@ -11,6 +11,11 @@ import ProductsScreen from './screens/ProductsScreen';
 import CartScreen from './screens/CartScreen';
 import logout from './components/Logout';
 import { useSelector } from 'react-redux';
+import ShippingScreen from './screens/ShippingScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import PaymentScreen from './screens/PaymentScreen';
+import PlaceOrderScreen from './screens/PlaceOrderScreen';
+import OrdersScreen from './screens/OrdersScreen';
 function App() {
 
   const userSignin = useSelector(state=>state.userSignin);
@@ -34,7 +39,7 @@ function App() {
 <Link to ="/">Vendor Management</Link>
 </div>
 <div className="header-links">
- <a href="cart.html">Cart</a>
+ <a href="/cart/:id?">Cart</a>
  {
    userInfo ? (<Link to="/profile">{userInfo.name}</Link>) : (<Link to="/signin">Sign In</Link>) 
  }
@@ -83,7 +88,12 @@ function App() {
 <Route path="/vendorRegister" component={VendorRegisterScreen}/>
 <Route path="/logout" component={logout}/>
 <Route path="/cart/:id?" component={CartScreen } />
-
+<Route path="/category/:id" component={HomeScreen} />
+<Route path="/shipping" component={ShippingScreen} />
+<Route path="/profile" component={ProfileScreen} />
+<Route path="/payment" component={PaymentScreen} />
+<Route path="/placeorder" component={PlaceOrderScreen} />
+<Route path="/orders" component={OrdersScreen} />
 </div>
 </main>
 <footer className="footer">

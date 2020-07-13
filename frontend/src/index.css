@@ -34,7 +34,7 @@ button {
 }
 .header {
   grid-area: header;
-  background-color: #203040;
+  background-color: #1b7a97;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
@@ -51,6 +51,7 @@ button {
   color: #ffffff;
   text-decoration: none;
   padding: 1rem;
+  font-weight: bold;
 }
 .header-links a:hover {
   color: #ff8000;
@@ -60,7 +61,7 @@ button {
 }
 .footer {
   grid-area: footer;
-  background-color: #203040;
+  background-color: #023d79;
   color: #ffffff;
   display: flex;
   justify-content: center;
@@ -232,11 +233,11 @@ a > .rating > span:last-child {
   border: 0.1rem #404040 solid;
 }
 .button.primary {
-  background-color: #f0c040;
+  background-color: #0686ad;
  
 }
 .button.secondary {
-  background-color: #f0f0f0;
+  background-color: #975353;
 }
 .text-center {
   text-align: center;
@@ -359,8 +360,8 @@ tbody > tr:nth-child(odd) {
   padding-top: 1rem;
 }
 .checkout-steps > div.active {
-  border-top: 0.3rem #f08000 solid;
-  color: #f08000;
+  border-top: 0.3rem #106ebb solid;
+  color: #0877b8;
 }
 
 /* Place Order */

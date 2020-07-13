@@ -92,7 +92,7 @@ function VendorRegisterScreen(props) {
         </li>
         <li>
           Already have an account?
-          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Sign In</Link>
+          <Link to={redirect === "/" ? "vendorSignin" : "vendorSignin?redirect=" + redirect} className="button secondary text-center" >Sign In</Link>
         </li>
         <li>
         Distributor Account Register?

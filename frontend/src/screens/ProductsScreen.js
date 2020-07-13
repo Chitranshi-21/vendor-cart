@@ -61,6 +61,7 @@ function ProdutsScreen(props) {
   return <div className="content content-margined">
 
     <div className="product-header">
+      <h3>Products</h3>
       <button className="button primary" onClick={() => openModal({})}>
           Create Product
         </button>
@@ -136,7 +137,6 @@ function ProdutsScreen(props) {
 
        )}
     <div className="product-list">
-    <h3>Products</h3>
       <table className="table">
         <thead>
           <tr>

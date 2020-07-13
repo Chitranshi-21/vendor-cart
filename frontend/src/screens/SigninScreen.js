@@ -7,28 +7,29 @@ function SigninScreen(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-   const userSignin = useSelector(state => state.userSignin);
-   const {loading, userInfo, error} = userSignin;
-   const dispatch = useDispatch();
-
+  const userSignin = useSelector(state => state.userSignin);
+  const { loading, userInfo, error } = userSignin;
+  const dispatch = useDispatch();
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
   useEffect(() => {
-   if (userInfo)
-     props.history.push("/");
+    if (userInfo) {
+      props.history.push(redirect);
+    }
     return () => {
       //
     };
   }, [userInfo]);
 
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
     dispatch(signin(email, password));
-  }
 
+  }
   return <div className="form">
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>Distributor Sign-In</h2>
+          <h2>Sign-In</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -53,7 +54,7 @@ function SigninScreen(props) {
           Not Registered?
         </li>
         <li>
-          <Link to="/register" className="button">Create your Distributor account</Link>
+          <Link to={redirect === "/" ? "register" : "register?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
         </li>
         <li>
          Vendor Account SignIn?

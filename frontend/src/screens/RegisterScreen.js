@@ -5,13 +5,10 @@ import { register } from '../actions/userActions';
 
 function RegisterScreen(props) {
 
-  const [fname, setfName] = useState('');
-  const [lname, setlName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [mobile, setMobile] = useState('');
-  const [city, setCity] = useState('');
   const [password, setPassword] = useState('');
-  const [repassword, setRePassword] = useState('');
+  const [rePassword, setRePassword] = useState('');
   const userRegister = useSelector(state => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
@@ -28,13 +25,13 @@ function RegisterScreen(props) {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(fname, lname, email, mobile, city, password, repassword));
+    dispatch(register(name, email, password));
   }
   return <div className="form">
     <form onSubmit={submitHandler} >
       <ul className="form-container">
         <li>
-          <h2>Create Distributor Account</h2>
+          <h2>Create Account</h2>
         </li>
         <li>
           {loading && <div>Loading...</div>}
@@ -42,19 +39,11 @@ function RegisterScreen(props) {
         </li>
         <li>
           <label htmlFor="name">
-            First Name
+            Name
           </label>
-          <input type="text" name="fname" id="fname" onChange={(e) => setfName(e.target.value)}>
+          <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
           </input>
         </li>
-        <li>
-          <label htmlFor="name">
-           Last Name
-          </label>
-          <input type="text" name="lname" id="lname" onChange={(e) => setlName(e.target.value)}>
-          </input>
-        </li>
-
         <li>
           <label htmlFor="email">
             Email
@@ -62,21 +51,6 @@ function RegisterScreen(props) {
           <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
-        <li>
-          <label htmlFor="mobile">
-            Mobile
-          </label>
-          <input type="text" name="mobile" id="mobile" onChange={(e) => setMobile(e.target.value)}>
-          </input>
-        </li>
-        <li>
-          <label htmlFor="city">
-            City
-          </label>
-          <input type="text" name="city" id="city" onChange={(e) => setCity(e.target.value)}>
-          </input>
-        </li>
-
         <li>
           <label htmlFor="password">Password</label>
           <input type="password" id="password" name="password" onChange={(e) => setPassword(e.target.value)}>
@@ -100,7 +74,6 @@ function RegisterScreen(props) {
         <li>
           <Link to="/vendorRegister" className="button">Click Here</Link>
         </li>
-
       </ul>
     </form>
   </div>
